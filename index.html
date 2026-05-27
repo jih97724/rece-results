@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7979 서울 러닝크루 - 기록 조회</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #FF6B35;
+    --primary-light: #FFF5F0;
+    --text-dark: #1a1a1a;
+    --text-mid: #555;
+    --text-light: #999;
+    --border: #FFE0D0;
+    --bg: #FAFAFA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .container {
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    padding: 40px 28px;
+  }
+
+  /* Header */
+  .logo-ra {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .logo-ra-text {
+    display: inline-block;
+    font-weight: 900;
+    font-size: 42px;
+    color: var(--text-dark);
+    position: relative;
+    letter-spacing: -1px;
+  }
+  .logo-ra-text::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+    margin-top: -8px;
+    margin-left: 8px;
+  }
+
+  .event-logo {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .event-arc {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #1E88C9;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .event-7979 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #1E88C9;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+  .event-kr {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1E88C9;
+    margin-top: 4px;
+    letter-spacing: 2px;
+  }
+
+  /* Section Header */
+  .section-header {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 14px;
+    border-radius: 28px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+
+  /* Search */
+  .search-box {
+    margin-bottom: 20px;
+  }
+  .search-label {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+  }
+  .search-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .search-input:focus {
+    border-color: var(--primary);
+  }
+  .search-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .search-btn:hover {
+    opacity: 0.9;
+  }
+  .search-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* Status messages */
+  .status {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-mid);
+    font-size: 14px;
+  }
+  .status.error {
+    color: #d32f2f;
+    background: #ffebee;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 16px;
+  }
+
+  /* Detail view */
+  .detail {
+    display: none;
+  }
+  .detail.active {
+    display: block;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 24px 0 16px;
+    position: relative;
+  }
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px dashed var(--primary);
+    z-index: 0;
+  }
+  .section-divider-label {
+    display: inline-block;
+    background: white;
+    padding: 4px 16px;
+    border: 1.5px solid var(--primary);
+    border-radius: 20px;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 13px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 4px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .info-row:last-child {
+    border-bottom: none;
+  }
+  .info-label {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 14px;
+  }
+  .info-label-sub {
+    color: var(--text-light);
+    font-weight: 400;
+    font-size: 13px;
+  }
+  .info-value {
+    color: var(--text-dark);
+    font-size: 15px;
+    text-align: right;
+    font-weight: 500;
+  }
+  .info-value.empty {
+    color: var(--text-light);
+  }
+
+  /* Buttons */
+  .btn-download {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    padding: 16px;
+    background: white;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 28px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .btn-download:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .btn-back {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    color: var(--text-mid);
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: inherit;
+  }
+  .btn-back:hover {
+    color: var(--primary);
+  }
+
+  /* Loading */
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Lap splits */
+  .splits {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 32px 20px; }
+    .logo-ra-text { font-size: 36px; }
+    .event-7979 { font-size: 32px; }
+    .event-kr { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Logo Header -->
+  <div class="logo-ra">
+    <div class="logo-ra-text">ra</div>
+  </div>
+  <div class="event-logo">
+    <div class="event-arc">SEOUL RUNNING CREW</div>
+    <div class="event-7979">7979</div>
+    <div class="event-kr">서울 러닝크루</div>
+  </div>
+
+  <!-- Section Header -->
+  <div class="section-header">PARTICIPANT DETAILS</div>
+
+  <!-- Search View -->
+  <div id="searchView">
+    <div class="search-box">
+      <label class="search-label" for="searchInput">배번호 또는 이름으로 검색</label>
+      <input type="text" id="searchInput" class="search-input" placeholder="예: 1 또는 이홍주" autocomplete="off">
+      <button class="search-btn" id="searchBtn">검색</button>
+    </div>
+    <div id="searchStatus"></div>
+  </div>
+
+  <!-- Detail View -->
+  <div id="detailView" class="detail">
+
+    <div class="section-divider">
+      <span class="section-divider-label">Participant</span>
+    </div>
+    <div class="info-row">
+      <div><span class="info-label">Name</span> <span class="info-label-sub">(이름)</span></div>
+      <div class="info-value" id="vName">-</div>
+    </div>
+    <div class="info-row">
+      <div><span class="info-label">BIB</span> <span class="info-label-sub">(배번호)</span></div>
+      <div class="info-value" id="vBib">-</div>
+    </div>
+    <div class="info-row">
+      <div><span class="info-label">Category</span> <span class="info-label-sub">(부문)</span></div>
+      <div class="info-value" id="vCategory">-</div>
+    </div>
+
+    <div class="section-divider">
+      <span class="section-divider-label">Performance</span>
+    </div>
+    <div class="info-row">
+      <div><span class="info-label">Finish Time</span> <span class="info-label-sub">(완주기록)</span></div>
+      <div class="info-value" id="vChipTime">-</div>
+    </div>
+    <div class="info-row">
+      <div><span class="info-label">Pace</span> <span class="info-label-sub">(페이스)</span></div>
+      <div class="info-value" id="vPace">-</div>
+    </div>
+
+    <div class="section-divider">
+      <span class="section-divider-label">Splits</span>
+    </div>
+    <div class="info-row">
+      <div><span class="info-label">4.75km</span></div>
+      <div class="info-value" id="vSplit1">-</div>
+    </div>
+    <div class="info-row">
+      <div><span class="info-label">5km</span></div>
+      <div class="info-value" id="vSplit2">-</div>
+    </div>
+    <div class="info-row">
+      <div><span class="info-label">8.82km</span></div>
+      <div class="info-value" id="vSplit3">-</div>
+    </div>
+
+    <a href="#" id="certLink" class="btn-download" target="_blank">기록증 다운로드</a>
+    <button class="btn-back" id="backBtn">다른 참가자 검색</button>
+  </div>
+
+</div>
+
+<script>
+  const API_URL = 'https://api.raceresult.com/402074/814P06LH9Z03ZXZ9FXS4EDYJL98ZX5NO';
+
+  let participants = [];
+
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  const searchStatus = document.getElementById('searchStatus');
+  const searchView = document.getElementById('searchView');
+  const detailView = document.getElementById('detailView');
+  const backBtn = document.getElementById('backBtn');
+
+  // Load API data on page load
+  async function loadData() {
+    searchBtn.disabled = true;
+    searchStatus.innerHTML = '<div class="status"><span class="spinner"></span><div style="margin-top:10px;">데이터 불러오는 중...</div></div>';
+    try {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error('API 응답 실패');
+      participants = await res.json();
+      searchStatus.innerHTML = '<div class="status" style="color:#999;font-size:12px;">총 ' + participants.length + '명의 참가자 데이터 로드 완료</div>';
+      searchBtn.disabled = false;
+    } catch (err) {
+      searchStatus.innerHTML = '<div class="status error">데이터 로드 실패: ' + err.message + '<br>인터넷 연결을 확인해주세요.</div>';
+    }
+  }
+
+  function searchParticipant() {
+    const query = searchInput.value.trim();
+    if (!query) {
+      searchStatus.innerHTML = '<div class="status error">배번호 또는 이름을 입력해주세요.</div>';
+      return;
+    }
+
+    // Try numeric (Bib) first
+    const num = parseInt(query, 10);
+    let found = null;
+
+    if (!isNaN(num) && String(num) === query) {
+      found = participants.find(p => p.Bib === num);
+    }
+
+    // If not found by Bib, search by name (partial match)
+    if (!found) {
+      const matches = participants.filter(p =>
+        p.FirstLastname && p.FirstLastname.includes(query)
+      );
+      if (matches.length === 1) {
+        found = matches[0];
+      } else if (matches.length > 1) {
+        searchStatus.innerHTML = '<div class="status error">동일한 이름의 참가자가 ' + matches.length + '명 있어요. 배번호로 검색해주세요.<br><br>' +
+          matches.map(p => '배번호 ' + p.Bib + ': ' + p.FirstLastname).join('<br>') + '</div>';
+        return;
+      }
+    }
+
+    if (found) {
+      showDetail(found);
+    } else {
+      searchStatus.innerHTML = '<div class="status error">"' + query + '" 에 해당하는 참가자를 찾을 수 없어요.</div>';
+    }
+  }
+
+  function showDetail(p) {
+    document.getElementById('vName').textContent = p.FirstLastname || '-';
+    document.getElementById('vBib').textContent = p.Bib || '-';
+    document.getElementById('vCategory').textContent = p.Category || '-';
+
+    setField('vChipTime', p.ChipTime, '레이스 진행중');
+    setField('vPace', p.Pace ? p.Pace + ' /km' : '', '-');
+    setField('vSplit1', p['4.75km'], '-');
+    setField('vSplit2', p['5km'], '-');
+    setField('vSplit3', p['8.82km'], '-');
+
+    document.getElementById('certLink').href = p['기록증링크'] || '#';
+
+    searchView.style.display = 'none';
+    detailView.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function setField(id, value, fallback) {
+    const el = document.getElementById(id);
+    if (value && value.trim() !== '') {
+      el.textContent = value;
+      el.classList.remove('empty');
+    } else {
+      el.textContent = fallback;
+      el.classList.add('empty');
+    }
+  }
+
+  function backToSearch() {
+    detailView.classList.remove('active');
+    searchView.style.display = 'block';
+    searchInput.value = '';
+    searchInput.focus();
+    searchStatus.innerHTML = '';
+  }
+
+  // Event listeners
+  searchBtn.addEventListener('click', searchParticipant);
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') searchParticipant();
+  });
+  backBtn.addEventListener('click', backToSearch);
+
+  // Init
+  loadData();
+</script>
+</body>
+</html>
