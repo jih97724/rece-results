@@ -377,14 +377,16 @@
     }
 
     if (!found) {
-      const matches = participants.filter(p =>
-        p.FirstLastname && p.FirstLastname.includes(query)
-      );
+      const getName = (p) => p.FirstLastname || p.Firstname || p.Name || p['이름'] || '';
+      const matches = participants.filter(p => {
+        const name = getName(p);
+        return name && name.includes(query);
+      });
       if (matches.length === 1) {
         found = matches[0];
       } else if (matches.length > 1) {
         searchStatus.innerHTML = '<div class="status error">동일한 이름의 참가자가 ' + matches.length + '명 있어요. 배번호로 검색해주세요.<br><br>' +
-          matches.map(p => '배번호 ' + p.Bib + ': ' + p.FirstLastname).join('<br>') + '</div>';
+          matches.map(p => '배번호 ' + p.Bib + ': ' + getName(p)).join('<br>') + '</div>';
         return;
       }
     }
