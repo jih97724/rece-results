@@ -1,6 +1,9 @@
 [
   {
-    "label": "2026년 5월 4주차 (5/29 목)",
+    "label": "2026년 5월 7회차(5/29 목) 양재",
     "api": "https://api.raceresult.com/402074/814P06LH9Z03ZXZ9FXS4EDYJL98ZX5NO"
-  }
+  },
+  {
+    "label": "2026년 5월 7회차(5/29 목) 여의도",
+    "api": "https://api.raceresult.com/402073/QV86QV3JYKQHU3U0XKVD4A8JEK86UOM4"
 ]
