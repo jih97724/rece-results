@@ -398,7 +398,9 @@
 
   function showDetail(p) {
     detailWeekInfo.textContent = currentWeek.label;
-    document.getElementById('vName').textContent = p.FirstLastname || '-';
+    // 이름: 여러 가능한 필드명 확인
+    const name = p.FirstLastname || p.Firstname || p.Name || p['이름'] || '-';
+    document.getElementById('vName').textContent = name;
     document.getElementById('vBib').textContent = p.Bib || '-';
     document.getElementById('vCategory').textContent = p.Category || '-';
 
