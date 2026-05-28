@@ -34,58 +34,8 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     padding: 40px 28px;
   }
-
-  /* Header */
-  .logo-ra {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .logo-ra-text {
-    display: inline-block;
-    font-weight: 900;
-    font-size: 42px;
-    color: var(--text-dark);
-    position: relative;
-    letter-spacing: -1px;
-  }
-  .logo-ra-text::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 4px;
-    background: var(--primary);
-    border-radius: 2px;
-    margin-top: -8px;
-    margin-left: 8px;
-  }
-
-  .event-logo {
-    text-align: center;
-    margin-bottom: 36px;
-  }
-  .event-arc {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #1E88C9;
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-  .event-7979 {
-    font-size: 38px;
-    font-weight: 900;
-    color: #1E88C9;
-    line-height: 1;
-    letter-spacing: 1px;
-  }
-  .event-kr {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1E88C9;
-    margin-top: 4px;
-    letter-spacing: 2px;
-  }
-
-  /* Section Header */
+  .logo-ra { text-align: center; margin-bottom: 30px; }
+  .event-logo { text-align: center; margin-bottom: 36px; }
   .section-header {
     background: var(--primary);
     color: white;
@@ -97,11 +47,34 @@
     letter-spacing: 1px;
     margin-bottom: 24px;
   }
-
-  /* Search */
-  .search-box {
-    margin-bottom: 20px;
+  .week-box { margin-bottom: 20px; }
+  .week-label {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
   }
+  .week-select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: white;
+    color: var(--text-dark);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FF6B35' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .week-select:focus { border-color: var(--primary); }
+  .search-box { margin-bottom: 20px; }
   .search-label {
     font-size: 13px;
     color: var(--text-mid);
@@ -119,9 +92,8 @@
     transition: border-color 0.2s;
     outline: none;
   }
-  .search-input:focus {
-    border-color: var(--primary);
-  }
+  .search-input:focus { border-color: var(--primary); }
+  .search-input:disabled { background: #f5f5f5; cursor: not-allowed; }
   .search-btn {
     width: 100%;
     margin-top: 12px;
@@ -136,21 +108,9 @@
     cursor: pointer;
     transition: opacity 0.2s;
   }
-  .search-btn:hover {
-    opacity: 0.9;
-  }
-  .search-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-
-  /* Status messages */
-  .status {
-    text-align: center;
-    padding: 20px;
-    color: var(--text-mid);
-    font-size: 14px;
-  }
+  .search-btn:hover { opacity: 0.9; }
+  .search-btn:disabled { background: #ccc; cursor: not-allowed; }
+  .status { text-align: center; padding: 20px; color: var(--text-mid); font-size: 14px; }
   .status.error {
     color: #d32f2f;
     background: #ffebee;
@@ -158,15 +118,8 @@
     padding: 16px;
     margin-top: 16px;
   }
-
-  /* Detail view */
-  .detail {
-    display: none;
-  }
-  .detail.active {
-    display: block;
-  }
-
+  .detail { display: none; }
+  .detail.active { display: block; }
   .section-divider {
     text-align: center;
     margin: 24px 0 16px;
@@ -194,7 +147,6 @@
     position: relative;
     z-index: 1;
   }
-
   .info-row {
     display: flex;
     justify-content: space-between;
@@ -202,30 +154,11 @@
     padding: 14px 4px;
     border-bottom: 1px solid #f5f5f5;
   }
-  .info-row:last-child {
-    border-bottom: none;
-  }
-  .info-label {
-    font-weight: 700;
-    color: var(--text-dark);
-    font-size: 14px;
-  }
-  .info-label-sub {
-    color: var(--text-light);
-    font-weight: 400;
-    font-size: 13px;
-  }
-  .info-value {
-    color: var(--text-dark);
-    font-size: 15px;
-    text-align: right;
-    font-weight: 500;
-  }
-  .info-value.empty {
-    color: var(--text-light);
-  }
-
-  /* Buttons */
+  .info-row:last-child { border-bottom: none; }
+  .info-label { font-weight: 700; color: var(--text-dark); font-size: 14px; }
+  .info-label-sub { color: var(--text-light); font-weight: 400; font-size: 13px; }
+  .info-value { color: var(--text-dark); font-size: 15px; text-align: right; font-weight: 500; }
+  .info-value.empty { color: var(--text-light); }
   .btn-download {
     display: block;
     width: 100%;
@@ -243,10 +176,7 @@
     transition: all 0.2s;
     font-family: inherit;
   }
-  .btn-download:hover {
-    background: var(--primary);
-    color: white;
-  }
+  .btn-download:hover { background: var(--primary); color: white; }
   .btn-back {
     display: block;
     width: 100%;
@@ -261,11 +191,17 @@
     text-decoration: underline;
     font-family: inherit;
   }
-  .btn-back:hover {
+  .btn-back:hover { color: var(--primary); }
+  .week-info {
+    background: var(--primary-light);
     color: var(--primary);
+    padding: 8px 14px;
+    border-radius: 16px;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 16px;
+    font-weight: 500;
   }
-
-  /* Loading */
   .spinner {
     display: inline-block;
     width: 20px;
@@ -279,24 +215,14 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-
-  /* Lap splits */
-  .splits {
-    margin-top: 8px;
-  }
-
   @media (max-width: 480px) {
     .container { padding: 32px 20px; }
-    .logo-ra-text { font-size: 36px; }
-    .event-7979 { font-size: 32px; }
-    .event-kr { font-size: 18px; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- Logo Header -->
   <div class="logo-ra">
     <img src="logo.png" alt="ra" style="max-width: 140px; height: auto;">
   </div>
@@ -304,26 +230,29 @@
     <img src="event-logo.png" alt="7979 서울 러닝크루" style="max-width: 280px; height: auto;">
   </div>
 
-  <!-- Section Header -->
   <div class="section-header">PARTICIPANT DETAILS</div>
 
-  <!-- Search View -->
   <div id="searchView">
+    <div class="week-box">
+      <label class="week-label" for="weekSelect">주차 선택</label>
+      <select id="weekSelect" class="week-select">
+        <option value="">불러오는 중...</option>
+      </select>
+    </div>
+
     <div class="search-box">
       <label class="search-label" for="searchInput">배번호 또는 이름으로 검색</label>
-    <input type="text" id="searchInput" class="search-input" placeholder="입력란" autocomplete="off">
-    <button class="search-btn" id="searchBtn">검색</button>
-      <button class="search-btn" id="searchBtn">검색</button>
+      <input type="text" id="searchInput" class="search-input" placeholder="예: 1 또는 이홍주" autocomplete="off" disabled>
+      <button class="search-btn" id="searchBtn" disabled>검색</button>
     </div>
+
     <div id="searchStatus"></div>
   </div>
 
-  <!-- Detail View -->
   <div id="detailView" class="detail">
+    <div class="week-info" id="detailWeekInfo"></div>
 
-    <div class="section-divider">
-      <span class="section-divider-label">Participant</span>
-    </div>
+    <div class="section-divider"><span class="section-divider-label">Participant</span></div>
     <div class="info-row">
       <div><span class="info-label">Name</span> <span class="info-label-sub">(이름)</span></div>
       <div class="info-value" id="vName">-</div>
@@ -337,9 +266,7 @@
       <div class="info-value" id="vCategory">-</div>
     </div>
 
-    <div class="section-divider">
-      <span class="section-divider-label">Performance</span>
-    </div>
+    <div class="section-divider"><span class="section-divider-label">Performance</span></div>
     <div class="info-row">
       <div><span class="info-label">Finish Time</span> <span class="info-label-sub">(완주기록)</span></div>
       <div class="info-value" id="vChipTime">-</div>
@@ -349,52 +276,81 @@
       <div class="info-value" id="vPace">-</div>
     </div>
 
-    <div class="section-divider">
-      <span class="section-divider-label">Splits</span>
-    </div>
-    <div class="info-row">
-      <div><span class="info-label">4.75km</span></div>
-      <div class="info-value" id="vSplit1">-</div>
-    </div>
-    <div class="info-row">
-      <div><span class="info-label">5km</span></div>
-      <div class="info-value" id="vSplit2">-</div>
-    </div>
-    <div class="info-row">
-      <div><span class="info-label">8.82km</span></div>
-      <div class="info-value" id="vSplit3">-</div>
-    </div>
+    <div class="section-divider"><span class="section-divider-label">Splits</span></div>
+    <div id="splitsContainer"></div>
 
     <a href="#" id="certLink" class="btn-download" target="_blank">기록증 다운로드</a>
-    <button class="btn-back" id="backBtn">다른 참가자 검색</button>
+    <button class="btn-back" id="backBtn">다른 주차 또는 참가자 검색</button>
   </div>
 
 </div>
 
 <script>
-  const API_URL = 'https://api.raceresult.com/402074/814P06LH9Z03ZXZ9FXS4EDYJL98ZX5NO';
-
+  let weeks = [];
   let participants = [];
+  let currentWeek = null;
 
+  const weekSelect = document.getElementById('weekSelect');
   const searchInput = document.getElementById('searchInput');
   const searchBtn = document.getElementById('searchBtn');
   const searchStatus = document.getElementById('searchStatus');
   const searchView = document.getElementById('searchView');
   const detailView = document.getElementById('detailView');
   const backBtn = document.getElementById('backBtn');
+  const detailWeekInfo = document.getElementById('detailWeekInfo');
+  const splitsContainer = document.getElementById('splitsContainer');
 
-  // Load API data on page load
-  async function loadData() {
-    searchBtn.disabled = true;
-    searchStatus.innerHTML = '<div class="status"><span class="spinner"></span><div style="margin-top:10px;">데이터 불러오는 중...</div></div>';
+  async function loadWeeks() {
     try {
-      const res = await fetch(API_URL);
+      const res = await fetch('weeks.json?t=' + Date.now());
+      if (!res.ok) throw new Error('weeks.json 로드 실패');
+      weeks = await res.json();
+
+      if (!weeks.length) {
+        weekSelect.innerHTML = '<option value="">등록된 주차가 없습니다</option>';
+        return;
+      }
+
+      weekSelect.innerHTML = '<option value="">-- 주차 선택 --</option>';
+      // Show most recent first
+      const sortedWeeks = [...weeks].reverse();
+      sortedWeeks.forEach((w) => {
+        const opt = document.createElement('option');
+        const originalIdx = weeks.indexOf(w);
+        opt.value = originalIdx;
+        opt.textContent = w.label;
+        weekSelect.appendChild(opt);
+      });
+
+      // Auto-select most recent
+      weekSelect.value = weeks.length - 1;
+      loadWeekData(weeks.length - 1);
+
+    } catch (err) {
+      weekSelect.innerHTML = '<option value="">로드 실패</option>';
+      searchStatus.innerHTML = '<div class="status error">주차 목록 로드 실패: ' + err.message + '<br><br>weeks.json 파일이 있는지 확인해주세요.</div>';
+    }
+  }
+
+  async function loadWeekData(idx) {
+    const week = weeks[idx];
+    if (!week) return;
+
+    currentWeek = week;
+    participants = [];
+    searchInput.disabled = true;
+    searchBtn.disabled = true;
+    searchStatus.innerHTML = '<div class="status"><span class="spinner"></span><div style="margin-top:10px;">' + week.label + ' 데이터 불러오는 중...</div></div>';
+
+    try {
+      const res = await fetch(week.api);
       if (!res.ok) throw new Error('API 응답 실패');
       participants = await res.json();
-      searchStatus.innerHTML = '<div class="status" style="color:#999;font-size:12px;">총 ' + participants.length + '명의 참가자 데이터 로드 완료</div>';
+      searchStatus.innerHTML = '<div class="status" style="color:#999;font-size:12px;">' + week.label + ' / 총 ' + participants.length + '명</div>';
+      searchInput.disabled = false;
       searchBtn.disabled = false;
     } catch (err) {
-      searchStatus.innerHTML = '<div class="status error">데이터 로드 실패: ' + err.message + '<br>인터넷 연결을 확인해주세요.</div>';
+      searchStatus.innerHTML = '<div class="status error">데이터 로드 실패: ' + err.message + '</div>';
     }
   }
 
@@ -405,7 +361,6 @@
       return;
     }
 
-    // Try numeric (Bib) first
     const num = parseInt(query, 10);
     let found = null;
 
@@ -413,7 +368,6 @@
       found = participants.find(p => p.Bib === num);
     }
 
-    // If not found by Bib, search by name (partial match)
     if (!found) {
       const matches = participants.filter(p =>
         p.FirstLastname && p.FirstLastname.includes(query)
@@ -435,15 +389,34 @@
   }
 
   function showDetail(p) {
+    detailWeekInfo.textContent = currentWeek.label;
     document.getElementById('vName').textContent = p.FirstLastname || '-';
     document.getElementById('vBib').textContent = p.Bib || '-';
     document.getElementById('vCategory').textContent = p.Category || '-';
 
     setField('vChipTime', p.ChipTime, '레이스 진행중');
     setField('vPace', p.Pace ? p.Pace + ' /km' : '', '-');
-    setField('vSplit1', p['4.75km'], '-');
-    setField('vSplit2', p['5km'], '-');
-    setField('vSplit3', p['8.82km'], '-');
+
+    // Auto-detect split fields (keys that aren't standard)
+    const standardKeys = ['Bib', 'FirstLastname', 'Category', 'ChipTime', 'Pace', '기록증링크'];
+    const splitKeys = Object.keys(p).filter(k => !standardKeys.includes(k));
+
+    splitsContainer.innerHTML = '';
+    if (splitKeys.length === 0) {
+      splitsContainer.innerHTML = '<div class="status" style="font-size:12px;">구간 기록 없음</div>';
+    } else {
+      splitKeys.forEach(key => {
+        const row = document.createElement('div');
+        row.className = 'info-row';
+        const value = p[key];
+        const displayValue = (value && String(value).trim() !== '') ? value : '-';
+        const emptyClass = (!value || String(value).trim() === '') ? ' empty' : '';
+        row.innerHTML =
+          '<div><span class="info-label">' + key + '</span></div>' +
+          '<div class="info-value' + emptyClass + '">' + displayValue + '</div>';
+        splitsContainer.appendChild(row);
+      });
+    }
 
     document.getElementById('certLink').href = p['기록증링크'] || '#';
 
@@ -454,7 +427,7 @@
 
   function setField(id, value, fallback) {
     const el = document.getElementById(id);
-    if (value && value.trim() !== '') {
+    if (value && String(value).trim() !== '') {
       el.textContent = value;
       el.classList.remove('empty');
     } else {
@@ -468,18 +441,21 @@
     searchView.style.display = 'block';
     searchInput.value = '';
     searchInput.focus();
-    searchStatus.innerHTML = '';
   }
 
-  // Event listeners
+  weekSelect.addEventListener('change', (e) => {
+    const idx = e.target.value;
+    if (idx !== '') {
+      loadWeekData(parseInt(idx, 10));
+    }
+  });
   searchBtn.addEventListener('click', searchParticipant);
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') searchParticipant();
   });
   backBtn.addEventListener('click', backToSearch);
 
-  // Init
-  loadData();
+  loadWeeks();
 </script>
 </body>
 </html>
