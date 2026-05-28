@@ -267,6 +267,10 @@
     </div>
 
     <div class="section-divider"><span class="section-divider-label">Performance</span></div>
+    <div class="info-row" id="rowDistance">
+      <div><span class="info-label">Distance</span> <span class="info-label-sub">(거리)</span></div>
+      <div class="info-value" id="vDistance">-</div>
+    </div>
     <div class="info-row">
       <div><span class="info-label">Finish Time</span> <span class="info-label-sub">(완주기록)</span></div>
       <div class="info-value" id="vChipTime">-</div>
@@ -404,6 +408,14 @@
     document.getElementById('vBib').textContent = p.Bib || '-';
     document.getElementById('vCategory').textContent = p.Category || '-';
 
+    // Distance 처리 (있으면 표시, 없으면 행 숨김)
+    const rowDistance = document.getElementById('rowDistance');
+    if (p.Distance && String(p.Distance).trim() !== '') {
+      document.getElementById('vDistance').textContent = p.Distance;
+      rowDistance.style.display = 'flex';
+    } else {
+      rowDistance.style.display = 'none';
+    }
     setField('vChipTime', p.ChipTime, '레이스 진행중');
     setField('vPace', p.Pace ? p.Pace + ' /km' : '', '-');
 
