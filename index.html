@@ -337,6 +337,14 @@
     if (!week) return;
 
     currentWeek = week;
+     
+    // 주차별 로고 변경
+    const eventLogoImg = document.querySelector('.event-logo img');
+    if (week.logo) {
+      eventLogoImg.src = week.logo;
+    } else {
+      eventLogoImg.src = 'event-logo.png';
+    }
     participants = [];
     searchInput.disabled = true;
     searchBtn.disabled = true;
