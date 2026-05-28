@@ -357,7 +357,7 @@
       const res = await fetch(week.api);
       if (!res.ok) throw new Error('API 응답 실패');
       participants = await res.json();
-      searchStatus.innerHTML = '<div class="status" style="color:#999;font-size:12px;">' + week.label + ' / 총 ' + participants.length + '명</div>';
+      searchStatus.innerHTML = '<div class="status" style="color:#999;font-size:12px;">' + week.label;
       searchInput.disabled = false;
       searchBtn.disabled = false;
     } catch (err) {
