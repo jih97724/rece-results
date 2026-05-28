@@ -311,20 +311,18 @@
         return;
       }
 
-      weekSelect.innerHTML = '<option value="">-- 주차 선택 --</option>';
-      // Show most recent first
-      const sortedWeeks = [...weeks].reverse();
-      sortedWeeks.forEach((w) => {
+  weekSelect.innerHTML = '<option value="">-- 주차 선택 --</option>';
+      // weeks.json 순서 그대로 (최신이 맨 위)
+      weeks.forEach((w, idx) => {
         const opt = document.createElement('option');
-        const originalIdx = weeks.indexOf(w);
-        opt.value = originalIdx;
+        opt.value = idx;
         opt.textContent = w.label;
         weekSelect.appendChild(opt);
       });
 
-      // Auto-select most recent
-      weekSelect.value = weeks.length - 1;
-      loadWeekData(weeks.length - 1);
+      // Auto-select 첫 번째 (최신)
+      weekSelect.value = 0;
+      loadWeekData(0);
 
     } catch (err) {
       weekSelect.innerHTML = '<option value="">로드 실패</option>';
