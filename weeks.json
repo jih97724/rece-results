@@ -8,4 +8,49 @@
     "api": "https://api.raceresult.com/402073/QV86QV3JYKQHU3U0XKVD4A8JEK86UOM4",
     "logo": "event-logo-blue.png"
   }
+  {
+    "label": "2026년 5월 6회차(5/21 목) 반포",
+    "api": "https://api.raceresult.com/400302/814P06LH9Z03ZXZ9FXS4EDYJL98ZX5NO"
+  },
+  {
+    "label": "2026년 5월 6회차(5/21 목) 여의도",
+    "api": "https://api.raceresult.com/400303/QV86QV3JYKQHU3U0XKVD4A8JEK86UOM4",
+    "logo": "event-logo-blue.png"
+  }
+  {
+    "label": "2026년 5월 5회차(5/14 목) 양재",
+    "api": "https://api.raceresult.com/399070/814P06LH9Z03ZXZ9FXS4EDYJL98ZX5NO"
+  },
+  {
+    "label": "2026년 5월 5회차(5/14 목) 여의도",
+    "api": "https://api.raceresult.com/399069/QV86QV3JYKQHU3U0XKVD4A8JEK86UOM4",
+    "logo": "event-logo-blue.png"
+  }
+  {
+    "label": "2026년 5월 4회차(5/7 목) 반포",
+    "api": "https://api.raceresult.com/396422/814P06LH9Z03ZXZ9FXS4EDYJL98ZX5NO"
+  },
+  {
+    "label": "2026년 5월 4회차(5/7 목) 여의도",
+    "api": "https://api.raceresult.com/396421/QV86QV3JYKQHU3U0XKVD4A8JEK86UOM4",
+    "logo": "event-logo-blue.png"
+  }
+  {
+    "label": "2026년 4월 3회차(4/30 목) 반포",
+    "api": "https://api.raceresult.com/395490/814P06LH9Z03ZXZ9FXS4EDYJL98ZX5NO"
+  },
+  {
+    "label": "2026년 4월 3회차(4/30 목) 여의도",
+    "api": "https://api.raceresult.com/395489/QV86QV3JYKQHU3U0XKVD4A8JEK86UOM4",
+    "logo": "event-logo-blue.png"
+  }
+  {
+    "label": "2026년 4월 2회차(4/23 목) 반포",
+    "api": "https://api.raceresult.com/391895/814P06LH9Z03ZXZ9FXS4EDYJL98ZX5NO"
+  },
+  {
+    "label": "2026년 4월 2회차(4/23 목) 여의도",
+    "api": "https://api.raceresult.com/395003/QV86QV3JYKQHU3U0XKVD4A8JEK86UOM4",
+    "logo": "event-logo-blue.png"
+  }
 ]
