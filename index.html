@@ -408,7 +408,7 @@
     setField('vPace', p.Pace ? p.Pace + ' /km' : '', '-');
 
     // Auto-detect split fields (keys that aren't standard)
-    const standardKeys = ['Bib', 'FirstLastname', 'Category', 'ChipTime', 'Pace', '기록증링크'];
+    const standardKeys = ['Bib', 'FirstLastname', 'Firstname', 'Name', '이름', 'Category', 'Contest', 'ChipTime', 'Pace', 'Distance', '기록증링크'];
     const splitKeys = Object.keys(p).filter(k => !standardKeys.includes(k));
 
     splitsContainer.innerHTML = '';
